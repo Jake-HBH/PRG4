@@ -1,5 +1,5 @@
 import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode, SolverStrategy, BoundingBox, Label, Font, DisplayMode, Color, CollisionType, Direction } from "excalibur"
+import { Actor, Engine, Vector, DisplayMode, SolverStrategy, BoundingBox } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from "./player.js"
 import { Enemy } from './enemy.js'
@@ -46,6 +46,8 @@ export class Game extends Engine {
         // const bg = new Background()
         // bg.scale = new Vector(1.5, 1.5)
         this.add(new Background(400, 300))
+        this.add(new Background(1400, 300))
+        this.add(new Background(2800, 300))
 
 
 
