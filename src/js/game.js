@@ -1,5 +1,5 @@
 import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode, SolverStrategy, BoundingBox, Label, Font, FontUnit, Color, CollisionType, Direction } from "excalibur"
+import { Actor, Engine, Vector, DisplayMode, SolverStrategy, BoundingBox, Label, Font, DisplayMode, Color, CollisionType, Direction } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from "./player.js"
 import { Enemy } from './enemy.js'
@@ -14,6 +14,7 @@ import { Background } from './background.js'
 
 const options = {
     width: 1500, height: 800,
+    displayMode: DisplayMode.FitScreen,
     physics: {
         solver: SolverStrategy.Realistic,
         gravity: new Vector(0, 800)
