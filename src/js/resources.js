@@ -1,8 +1,8 @@
-import { ImageSource, Sound, Resource, Loader, FontSource, SoundEvents} from 'excalibur'
+import { ImageSource, Sound, Resource, Loader, FontSource, SoundEvents, ImageFiltering} from 'excalibur'
 
 const Resources = {
     bg: new ImageSource('images/background.jpg'),
-    Enemy: new ImageSource('images/robdedoodlerbgr.png'),
+    Enemy: new ImageSource('images/flying-rat.png'),
     Player: new ImageSource('images/pirare.png'),
     Platform: new ImageSource('images/platform2.png'),
     Door: new ImageSource('images/door.png'),
@@ -11,6 +11,8 @@ const Resources = {
     Rock: new ImageSource("images/rock.png"),
     Coin: new ImageSource("images/skull-coin.png"),
     Powerup: new ImageSource("images/powerup.png"),
+    IntroBanner: new ImageSource("images/background1.png"),
+    GameOverBanner: new ImageSource("images/yiming.png")
     // CoinSound: new Sound("sounds/coin-sound.wav"),
     // Anim: new ImageSource('images/all.png'),
 }

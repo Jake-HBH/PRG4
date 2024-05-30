@@ -1,6 +1,7 @@
 import { Actor, Vector, CollisionType } from "excalibur";
 import { Resources } from './resources.js';
 import { Game } from "./game.js";
+import { Level } from "./level.js";
 
 export class Coin extends Actor {
     constructor(x, y) {

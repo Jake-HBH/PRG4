@@ -2,7 +2,7 @@ import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
 import { ScoreLabel } from "./scoreLabel";
 
 export class UI extends ScreenElement {
-    onInitialize(engine) {
+    onInitialize() {
         this.scoreLabel = new ScoreLabel();
         this.addChild(this.scoreLabel);
 
@@ -11,6 +11,5 @@ export class UI extends ScreenElement {
     updateField(score) {
         console.log("point");
         this.scoreLabel.text = `Score: ${score}`;
-
     }
 }
