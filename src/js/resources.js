@@ -4,6 +4,11 @@ const Resources = {
     bg: new ImageSource('images/background.jpg'),
     Enemy: new ImageSource('images/flying-rat.png'),
     Player: new ImageSource('images/pirare.png'),
+
+    PlayerIdle: new ImageSource('images/Idel Animation 48x48.png'),
+    PlayerRun: new ImageSource('images/Run Animation 48x48.png'),
+    PlayerJump: new ImageSource('images/Jump Animation 48x48.png'),
+
     Platform: new ImageSource('images/platform2.png'),
     Door: new ImageSource('images/door.png'),
     Key: new ImageSource('images/pixel-key.png'),

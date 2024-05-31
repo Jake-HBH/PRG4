@@ -12,11 +12,15 @@ import { UI } from "./ui.js";
 
 export class Level extends Scene {
     onInitialize(engine) {
+        
         console.log("LEVEL 1")
         localStorage.setItem(`inventory`, JSON.stringify([]));
         this.add(new Background(400, 300));
 
-        const player = new Player();
+        this.ui = new UI();
+        this.add(this.ui);
+
+        const player = new Player(400, 200);
         this.add(player);
 
         this.add(new Enemy(0, 350));
@@ -35,8 +39,7 @@ export class Level extends Scene {
 
         this.add(new Rock(370, 350));
 
-        this.ui = new UI();
-        this.add(this.ui);
+
 
         this.camera.zoom = 2;
         this.camera.strategy.lockToActor(player);

@@ -16,6 +16,9 @@ export class Level2 extends Scene {
         localStorage.setItem(`inventory`, JSON.stringify([]));
         this.add(new Background(400, 300));
 
+        this.ui = new UI();
+        this.add(this.ui);
+
         const player = new Player();
         this.add(player);
 
@@ -35,11 +38,13 @@ export class Level2 extends Scene {
 
         this.add(new Rock(370, 350));
 
-        this.ui = new UI();
-        this.add(this.ui);
+
 
         this.camera.zoom = 2;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 3000, 700));
+
     }
+
+
 }

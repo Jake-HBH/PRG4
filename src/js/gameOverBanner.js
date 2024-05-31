@@ -1,4 +1,4 @@
-import { Actor, Vector } from "excalibur";
+import { Actor} from "excalibur";
 import { Resources } from './resources.js';
 
 export class GameOverBanner extends Actor {

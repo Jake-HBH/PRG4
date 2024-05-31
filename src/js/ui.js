@@ -1,5 +1,5 @@
 import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
-import { ScoreLabel } from "./scoreLabel";
+import { ScoreLabel } from "./scoreLabel.js";
 
 export class UI extends ScreenElement {
     onInitialize() {
