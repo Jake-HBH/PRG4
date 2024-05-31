@@ -12,7 +12,7 @@ import { UI } from "./ui.js";
 
 export class Level extends Scene {
     onInitialize(engine) {
-        
+
         console.log("LEVEL 1")
         localStorage.setItem(`inventory`, JSON.stringify([]));
         this.add(new Background(400, 300));
@@ -47,5 +47,14 @@ export class Level extends Scene {
 
     }
 
-    
+    clearActors() {
+        this.actors.forEach(actor => {
+            actor.kill();
+        });
+    }
+
+    onActivate(ctx) {
+        this.clearActors();
+        this.onInitialize(this.engine);
+    }
 }

@@ -1,7 +1,5 @@
 import { Actor, Vector, CollisionType } from "excalibur";
 import { Resources } from './resources.js';
-import { Game } from "./game.js";
-import { Level } from "./level.js";
 
 export class Coin extends Actor {
     constructor(x, y) {
@@ -16,10 +14,9 @@ export class Coin extends Actor {
     }
 
     // Method to handle the key being picked up by the player
-    pickUp(player) {
+    pickUp() {
         if (!this.isPickedUp) { // Check if the coin is not already picked up
             this.isPickedUp = true; // Set the flag to indicate that the key is picked up
-            console.log("picked up coin!")
             this.actions.fade(0, 200).die(); // Fade out and remove the key from the scene
             
         }

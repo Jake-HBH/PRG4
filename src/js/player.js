@@ -1,11 +1,10 @@
 import { Actor, Engine, Vector, Keys, CollisionType, DegreeOfFreedom, SpriteSheet, range, Animation } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { Enemy } from "./enemy.js";
-import { Key } from "./key.js";
 import { Coin } from "./coin.js";
 import { Powerup } from "./powerup.js";
-import { GameOver } from "./gameOver.js";
 import { UI } from "./ui.js";
+
 
 export class Player extends Actor { // Ensure Player class is exported
     constructor(x, y) {
@@ -19,6 +18,7 @@ export class Player extends Actor { // Ensure Player class is exported
         this.health = 100;
         this.jumpSpeed = -5000;
         this.score = 0
+        this.ui = new UI()
     }
 
     onInitialize(engine) {
@@ -66,11 +66,7 @@ export class Player extends Actor { // Ensure Player class is exported
         const walk = Animation.fromSpriteSheet(runningSpritesheet, range(1, 7), 130)
         const run = Animation.fromSpriteSheet(runningSpritesheet, range(1, 7), 80)
         const jump = Animation.fromSpriteSheet(jumpingSpritesheet, range(1, 5), 20)
-        //idle
-        // this.Idle = Animation.fromSpriteSheet(idle, range(1, 9), 100);
-        // //walking
-        // this.Walk = Animation.fromSpriteSheet(running, range(1, 7), 70);
-        // this.Run = Animation.fromSpriteSheet(running, range(1, 7), 100);
+
 
         this.graphics.add("idle", idle)
         this.graphics.add("walk", walk)
@@ -78,11 +74,13 @@ export class Player extends Actor { // Ensure Player class is exported
         this.graphics.add("jump", jump)
 
         this.graphics.use(idle);
-        this.z = 1
+        this.z = 10
+
+        this.ui = new UI()
     }
 
-
-    onCollisionStart(evt, engine) {
+    
+    onCollisionStart(evt, engine, score) {
         if (!evt.other) {
             // Exit early if evt.other is undefined
             return;
@@ -111,12 +109,18 @@ export class Player extends Actor { // Ensure Player class is exported
             this.nearbyDoor = evt.other;
         }
 
-        if (evt.other instanceof Coin) {
-            console.log("picked up a coin")
-            this.score += 10
-            evt.other.pickUp(this)
-            if (this.scene && this.scene.engine && this.scene.engine.ui) {
-                this.scene.engine.ui.updateField(this.score);
+            // Check if UI exists before updating it
+        if (this.scene && this.scene.engine && this.scene.engine.ui) {
+            if (evt.other instanceof Coin) {
+                console.log("picked up a coin")
+                this.score += 10
+                evt.other.pickUp(this);
+                this.scene.engine.ui.addPoint(score);
+                console.log(this.score)
+
+                // console.log("the car hits the pickup")
+                // this.scene.engine.addPoint(ui);
+                // event.other.kill()
             }
         }
 
@@ -172,6 +176,10 @@ export class Player extends Actor { // Ensure Player class is exported
             
         }
 
+        // if (this.scene && this.scene.engine && this.scene.engine.ui) {
+        //     // Check if UI exists before updating it
+        //     this.scene.engine.ui.addPoint(this.score);
+        // }
 
         if (engine.input.keyboard.wasPressed(Keys.E) && this.nearbyDoor) {
             let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
@@ -187,12 +195,10 @@ export class Player extends Actor { // Ensure Player class is exported
         }
     }
 
-
-    resetPosition() {
-        this.pos = new Vector(450, 200)
+    hitSomething(event) {
+        console.log(`we hit something! ${event.other}`);
+        this.scene.engine.addPoint();
     }
-
-
 
     addToInventory(item) {
         this.inventory.push(item);

@@ -1,6 +1,6 @@
-import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
+import { Label, Vector, Font, FontUnit } from "excalibur";
 
-export class ScoreLabel extends Label {
+export class scoreLabel extends Label {
     constructor(player) {
         super({
             text: 'Score: 0',
@@ -11,6 +11,11 @@ export class ScoreLabel extends Label {
             })
         });
         this.player = player;
-        this.pos = new Vector(400, 0)
+        this.pos = new Vector(10, 10);
+        this.z = 10;
+    }
+
+    updateScore(score) {
+        this.text = `Score: ${this.score}`;
     }
 }
