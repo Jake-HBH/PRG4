@@ -11,11 +11,7 @@ export class ScoreLabel extends Label {
             })
         });
         this.player = player;
-        this.pos = new Vector(400, 0); // Use setTo() method to set position
-    }
-
-    // Add a method to update the score
-    updateScore(score) {
-        this.text = `Score: ${score}`;
+        this.pos = new Vector(10, 0);
+        this.z = 0
     }
 }

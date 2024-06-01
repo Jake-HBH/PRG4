@@ -5,8 +5,8 @@ import { IntroScene } from './introScene.js'
 import { Level } from './level.js'
 import { Level2 } from './level2.js'
 import { GameOver } from './gameOver.js'
+import { Finish } from './finish.js'
 import { UI } from './ui.js'
-import { Player } from './player.js'
 
 const options = {
     width: 1500, height: 800,
@@ -21,7 +21,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options)
-        this.showDebug(true)
+        this.showDebug(false)
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
@@ -29,6 +29,8 @@ export class Game extends Engine {
     mylabel
     
     startGame() {
+
+
         this.ui = new UI()
         this.add(this.ui)
 
@@ -37,12 +39,12 @@ export class Game extends Engine {
         this.add(`level`, new Level)
         this.add(`level2`, new Level2)
         this.add(`gameover`, new GameOver)
+        this.add(`finish`, new Finish)
         this.goToScene(`intro`)
     }
 
-    updateScore() {
-        this.score++
-        this.mylabel.text = `Score: ${this.score}`
+    updateScore(score) {
+        this.text = `Score: ${score}`;
     }
 }
 

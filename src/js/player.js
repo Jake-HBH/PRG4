@@ -12,14 +12,12 @@ export class Player extends Actor { // Ensure Player class is exported
         this.graphics.use(Resources.Player.toSprite());
 
         this.body.collisionType = CollisionType.Active;
-        this.isGrounded = false; // Add a property to track if the player is on the ground
+        this.isGrounded = false;
         this.scale = new Vector(1, 1);
         this.pos = new Vector(150, 950)
-        this.inventory = []; // Initialize an empty array to store collected items
-        this.health = 100;
+        this.inventory = [];
         this.jumpSpeed = -5000;
         this.score = 0
-        this.ui = new UI()
         
     }
 
@@ -73,7 +71,6 @@ export class Player extends Actor { // Ensure Player class is exported
         this.graphics.use(idle);
         this.z = 10
 
-        this.ui.onInitialize(engine); // Call the UI's onInitialize method
     }
 
     
@@ -107,15 +104,17 @@ export class Player extends Actor { // Ensure Player class is exported
         }
 
             // Check if UI exists before updating it
-        if (this.scene && this.scene.engine && this.scene.engine.ui) {
-            if (evt.other instanceof Coin) {
-                console.log("picked up a coin");
-                this.score += 10;
-                evt.other.pickUp(this);
-                console.log(this.score);
-                this.scene.engine.ui.updateField(score); // Check if score is correctly passed
+        if (evt.other instanceof Coin) {
+            console.log("picked up a coin");
+            this.score += 10;
+            evt.other.pickUp(this);
+            console.log(this.score);
+            if (this.scene && this.scene.engine && this.scene.engine.ui) {
+                this.scene.engine.updateScore(this.score); // Pass this.score instead of score
             }
+            
         }
+
 
         if (evt.other instanceof Powerup) {
             evt.other.pickUp(this);
@@ -125,17 +124,9 @@ export class Player extends Actor { // Ensure Player class is exported
             //     this.jumpSpeed = -5000
             // ), 5000);
         }
-
-        // this.on("exitviewport", () => {
-        //     if (this.scene && this.scene.engine) {
-        //         this.scene.engine.goToScene('gameover');
-        //     }
-        // })
     }
 
-
-
-    onPostUpdate(engine) {
+    onPostUpdate(engine, evt) {
         let xspeed = 0;
         this.graphics.use("idle");
 
@@ -143,20 +134,13 @@ export class Player extends Actor { // Ensure Player class is exported
             xspeed = 200;
             this.graphics.use('walk')
             this.graphics.flipHorizontal = false;
-            // if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-            //     xspeed = 400;
-            //     this.graphics.use('run')
-            // }
+
         }
 
         if (engine.input.keyboard.isHeld(Keys.A) || engine.input.keyboard.isHeld(Keys.Left)) {
             xspeed = -200;
             this.graphics.use('walk')
             this.graphics.flipHorizontal = true;
-            // if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-            //     xspeed = -400;
-            //     this.graphics.use('run')
-            // }
         }
 
 
@@ -189,10 +173,6 @@ export class Player extends Actor { // Ensure Player class is exported
         }
     }
 
-    hitSomething(event) {
-        console.log(`we hit something! ${event.other}`);
-        this.scene.engine.addPoint();
-    }
 
     addToInventory(item) {
         this.inventory.push(item);

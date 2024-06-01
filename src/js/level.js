@@ -14,6 +14,7 @@ import { RockRoof2 } from "./rockroof2.js";
 import { BlackRocks } from "./blackrocks.js";
 import { WoodenScaffolding } from "./scaffolding.js";
 import { WoodenPlatform } from "./woodenplatform.js";
+import { Flashlight2 } from "./flashlight2.js";
 
 export class Level extends Scene {
     onInitialize(engine) {
@@ -29,13 +30,13 @@ export class Level extends Scene {
         const player = new Player();
         this.add(player);
 
-        this.add(new Enemy(500, 800));
+        this.add(new Enemy(500, 810));
         this.add(new Enemy(1900, 850));
+        this.add(new Enemy(2500, 500));
         this.add(new Door(1600, 850));
         this.add(new Flashlight(1600, 400));
         this.add(new Coin(90, 365));
-        this.add(new Powerup(1960, 830)); //2800 750
-
+        this.add(new Powerup(1960, 830));
         //width, height
         //hoger nummer is lager
         //lager nummer is hoger
@@ -88,17 +89,16 @@ export class Level extends Scene {
         
         this.add(new BlackRocks(-40, -10));
         
-        
 
-        // this.add(new Rock(370, 350));
-
-
-
-        this.camera.zoom = 1;
+        this.camera.zoom = 3;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 3000, 1000));
 
+       
     }
+
+    
+
 
     clearActors() {
         this.actors.forEach(actor => {

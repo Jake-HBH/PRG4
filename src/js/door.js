@@ -1,6 +1,5 @@
 import { Actor, Vector, CollisionType, Label, Font, Color } from "excalibur";
 import { Resources } from './resources.js';
-import { Game } from "./game.js";
 
 export class Door extends Actor {
     constructor(x, y) {

@@ -3,8 +3,7 @@ import { GameOverBanner } from "./gameOverBanner.js";
 
 export class GameOver extends Scene {
     onInitialize() {
-        let gameOverBanner = new GameOverBanner();
-        this.add(gameOverBanner);
+        this.add(new GameOverBanner(750, 400))
     }
 
     onActivate() {

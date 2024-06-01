@@ -2,9 +2,10 @@ import { Scene, BoundingBox } from "excalibur";
 import { Player } from "./player.js";
 import { Enemy } from "./enemy.js";
 import { Door } from "./door.js";
+import {Door2} from "./door2.js";
 import { Flashlight } from "./flashlight.js";
+import { Flashlight2 } from "./flashlight2.js";
 import { Coin } from "./coin.js";
-import { Powerup } from "./powerup.js";
 import { Background } from "./background.js";
 import { UI } from "./ui.js";
 import { RockFloor } from "./rockfloor.js";
@@ -16,7 +17,7 @@ import { WoodenScaffolding } from "./scaffolding.js";
 import { WoodenPlatform } from "./woodenplatform.js";
 
 export class Level2 extends Scene {
-    onInitialize(engine) {
+    onInitialize(evt) {
 
         console.log("LEVEL 2")
         localStorage.setItem(`inventory`, JSON.stringify([]));
@@ -29,7 +30,9 @@ export class Level2 extends Scene {
         const player = new Player();
         this.add(player);
 
-        // this.add(new Enemy(700, 800));
+        this.add(new Enemy(700, 830));
+        this.add(new Enemy(800, 730));
+        this.add(new Enemy(1300, 530));
         this.add(new Door(1600, 850));
         this.add(new Flashlight(1600, 400));
         this.add(new Coin(550, 740));
@@ -45,12 +48,6 @@ export class Level2 extends Scene {
         this.add(new RockFloor(1850, 950));
         this.add(new RockFloor(2150, 900));
 
-
-
-
-        // this.add(new RockRoof2(180, 700));
-        // this.add(new RockRoof(450, 650));
-        // this.add(new RockRoof2(700, 680));
         this.add(new RockRoof(1100, 680));
         this.add(new RockRoof2(1370, 710));
         this.add(new RockRoof2(1640, 610));
@@ -88,15 +85,11 @@ export class Level2 extends Scene {
 
 
 
-        // this.add(new Rock(370, 350));
-
-
-
         this.camera.zoom = 3;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 3000, 1000));
-
     }
+
 
     clearActors() {
         this.actors.forEach(actor => {
