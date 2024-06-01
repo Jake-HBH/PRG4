@@ -6,7 +6,7 @@ import { Key } from "./key.js";
 import { Coin } from "./coin.js";
 import { Powerup } from "./powerup.js";
 import { Background } from "./background.js";
-import { Platform } from "./platform.js";
+import { RockFloor } from "./rockfloor.js";
 import { Rock } from "./rock.js";
 import { UI } from "./ui.js";
 
@@ -15,7 +15,7 @@ export class Level extends Scene {
 
         console.log("LEVEL 1")
         localStorage.setItem(`inventory`, JSON.stringify([]));
-        this.add(new Background(400, 300));
+        this.add(new Background(100, 280));
 
         this.ui = new UI();
         this.add(this.ui);
@@ -29,19 +29,19 @@ export class Level extends Scene {
         this.add(new Coin(800, 350));
         this.add(new Powerup(600, 350));
 
-        this.add(new Platform(300, 200));
-        this.add(new Platform(450, 450));
-        this.add(new Platform(800, 500));
-        this.add(new Platform(1250, 450));
-        this.add(new Platform(1850, 600));
-        this.add(new Platform(2350, 450));
-        this.add(new Platform(2650, 400));
+        this.add(new RockFloor(-90, 800));
+        this.add(new RockFloor(450, 850));
+        this.add(new RockFloor(800, 900));
+        this.add(new RockFloor(1250, 950));
+        this.add(new RockFloor(1850, 1100));
+        this.add(new RockFloor(2350, 950));
+        this.add(new RockFloor(2650, 900));
 
         this.add(new Rock(370, 350));
 
 
 
-        this.camera.zoom = 2;
+        this.camera.zoom = 1.7;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 3000, 700));
 

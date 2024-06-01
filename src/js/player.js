@@ -8,10 +8,11 @@ import { UI } from "./ui.js";
 
 export class Player extends Actor { // Ensure Player class is exported
     constructor(x, y) {
-        super({ x, y, width: Resources.Player.width - 250, height: Resources.Player.height - 230});
+        super({ x, y, width: Resources.Player.width, height: Resources.Player.height});
+        this.graphics.use(Resources.Player.toSprite());
+
         this.body.collisionType = CollisionType.Active;
         this.isGrounded = false; // Add a property to track if the player is on the ground
-        this.graphics.use(Resources.Player.toSprite());
         this.scale = new Vector(1.7, 1.7);
         this.pos = new Vector(450, 200)
         this.inventory = []; // Initialize an empty array to store collected items

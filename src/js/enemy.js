@@ -11,7 +11,7 @@ export class Enemy extends Actor {
         this.graphics.use(Resources.Enemy.toSprite());
         let size = 0.5
         this.scale = new Vector(size, size);
-        this.vel = new Vector(150, -3);
+        // this.vel = new Vector(150, -3);
         this.on('collisionstart', (evt) => this.onCollisionStart(evt));
         // Math.random() * (0.3 - 0.2) + 0.2;
     }
