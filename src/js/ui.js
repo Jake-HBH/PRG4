@@ -1,56 +1,15 @@
-import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
-import { scoreLabel } from "./scoreLabel.js";
+import { ScreenElement } from "excalibur";
+import { ScoreLabel } from "./scoreLabel.js"; // Corrected import statement
 
 export class UI extends ScreenElement {
-    constructor(player) {
-        super();
-        this.player = player;
-        this.pos = new Vector(400, 0);
-        this.z = 10;
-        this.score = 0;
-    }
-
     onInitialize(engine) {
-        this.scoreLabel = new scoreLabel();
+        this.scoreLabel = new ScoreLabel();
         this.addChild(this.scoreLabel);
     }
 
-    addPoint() {
-        this.score++;
-        console.log("point");
-        
-        this.scoreLabel.updateScore(this.score);
+    // Update the score label with the provided score
+    updateField(score) {
+        console.log("point")
+        // this.scoreLabel.updateScore(score); 
     }
 }
-
-
-// import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
-// // import { scoreLabel } from "./scoreLabel";
-
-// export class UI extends ScreenElement {
-//     constructor(player) {
-//         super({
-//             text: 'Score: 0',
-//             font: new Font({
-//                 family: 'impact',
-//                 size: 24,
-//                 unit: FontUnit.Px
-//             })
-//         });
-//         this.player = player;
-//         this.pos = new Vector(10, 10)
-//         this.z = 10
-//     }
-
-
-//     onInitialize(engine) {
-//         this.score = 0;
-
-//     }
-
-//     addPoint() {
-//         this.score++;
-//         console.log("point");
-//         this.score = `Score: ${this.score}`;
-//     }
-// }

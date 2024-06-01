@@ -23,9 +23,10 @@ export class Game extends Engine {
 
     constructor() {
         super(options)
-        this.showDebug(true)
+        this.showDebug(false)
 
         this.start(ResourceLoader).then(() => this.startGame())
+
     }
 
     ui

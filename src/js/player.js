@@ -19,6 +19,7 @@ export class Player extends Actor { // Ensure Player class is exported
         this.jumpSpeed = -5000;
         this.score = 0
         this.ui = new UI()
+        
     }
 
     onInitialize(engine) {
@@ -76,7 +77,7 @@ export class Player extends Actor { // Ensure Player class is exported
         this.graphics.use(idle);
         this.z = 10
 
-        this.ui = new UI()
+        this.ui.onInitialize(engine); // Call the UI's onInitialize method
     }
 
     
@@ -112,15 +113,11 @@ export class Player extends Actor { // Ensure Player class is exported
             // Check if UI exists before updating it
         if (this.scene && this.scene.engine && this.scene.engine.ui) {
             if (evt.other instanceof Coin) {
-                console.log("picked up a coin")
-                this.score += 10
+                console.log("picked up a coin");
+                this.score += 10;
                 evt.other.pickUp(this);
-                this.scene.engine.ui.addPoint(score);
-                console.log(this.score)
-
-                // console.log("the car hits the pickup")
-                // this.scene.engine.addPoint(ui);
-                // event.other.kill()
+                console.log(this.score);
+                this.scene.engine.ui.updateField(score); // Check if score is correctly passed
             }
         }
 
@@ -150,7 +147,7 @@ export class Player extends Actor { // Ensure Player class is exported
             this.graphics.use('walk')
             this.graphics.flipHorizontal = false;
             if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = 400;
+                xspeed = 300;
                 this.graphics.use('run')
             }
         }
@@ -160,7 +157,7 @@ export class Player extends Actor { // Ensure Player class is exported
             this.graphics.use('walk')
             this.graphics.flipHorizontal = true;
             if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = -400;
+                xspeed = -300;
                 this.graphics.use('run')
             }
         }
