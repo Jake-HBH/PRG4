@@ -17,7 +17,7 @@ export class Player extends Actor { // Ensure Player class is exported
         this.pos = new Vector(450, 200)
         this.inventory = []; // Initialize an empty array to store collected items
         this.health = 100;
-        this.jumpSpeed = -5000;
+        this.jumpSpeed = -10000;
         this.score = 0
         this.ui = new UI()
         
