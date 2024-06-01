@@ -4,7 +4,7 @@ import { ImageSource, Sound, Resource, Loader} from 'excalibur'
 const Resources = {
     Background: new ImageSource('images/background1.png'),
 
-    Enemy: new ImageSource('images/flying-rat.png'),
+    Enemy: new ImageSource('images/bat.gif'),
 
     Player: new ImageSource('images/shadow.png'),
     PlayerIdle: new ImageSource('images/Idel Animation 48x48.png'),
@@ -17,7 +17,7 @@ const Resources = {
     Coin: new ImageSource("images/skull-coin.png"),
     Powerup: new ImageSource("images/powerup.png"),
     
-    IntroBanner: new ImageSource("images/background1.png"),
+    IntroBanner: new ImageSource("images/introbanner.png"),
     GameOverBanner: new ImageSource("images/yiming.png"),
     
     BlackRocks: new ImageSource("images/black rocks.png"),

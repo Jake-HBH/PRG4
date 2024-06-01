@@ -8,8 +8,6 @@ import { GameOver } from './gameOver.js'
 import { UI } from './ui.js'
 import { Player } from './player.js'
 
-// import data from "./platforms.json"
-
 const options = {
     width: 1500, height: 800,
     displayMode: DisplayMode.FitScreen,
@@ -23,7 +21,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options)
-        this.showDebug(false)
+        this.showDebug(true)
         this.start(ResourceLoader).then(() => this.startGame())
     }
 

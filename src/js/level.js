@@ -29,7 +29,8 @@ export class Level extends Scene {
         const player = new Player();
         this.add(player);
 
-        // this.add(new Enemy(700, 800));
+        this.add(new Enemy(500, 800));
+        this.add(new Enemy(1900, 850));
         this.add(new Door(1600, 850));
         this.add(new Flashlight(1600, 400));
         this.add(new Coin(90, 365));
@@ -93,7 +94,7 @@ export class Level extends Scene {
 
 
 
-        this.camera.zoom = 3;
+        this.camera.zoom = 1;
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 3000, 1000));
 

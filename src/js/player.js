@@ -36,7 +36,7 @@ export class Player extends Actor { // Ensure Player class is exported
             image: Resources.PlayerIdle,
             grid: {
                 rows: 1,
-                columns: 10,
+                columns: 7,
                 spriteWidth: 48,
                 spriteHeight: 48
             },
@@ -45,7 +45,7 @@ export class Player extends Actor { // Ensure Player class is exported
             image: Resources.PlayerRun,
             grid: {
                 rows: 1,
-                columns: 8,
+                columns: 7,
                 spriteWidth: 48,
                 spriteHeight: 48
             },
@@ -53,15 +53,15 @@ export class Player extends Actor { // Ensure Player class is exported
         const jumpingSpritesheet = SpriteSheet.fromImageSource({
             image: Resources.PlayerJump,
             grid: {
-                rows: 1,
+                rows: 2,
                 columns: 6,
                 spriteWidth: 48,
                 spriteHeight: 48
             },
         });
-        const idle = Animation.fromSpriteSheet(idleSpritesheet, range(1, 9), 100)
-        const walk = Animation.fromSpriteSheet(runningSpritesheet, range(1, 7), 130)
-        const run = Animation.fromSpriteSheet(runningSpritesheet, range(1, 7), 80)
+        const idle = Animation.fromSpriteSheet(idleSpritesheet, range(1, 6), 100)
+        const walk = Animation.fromSpriteSheet(runningSpritesheet, range(1, 6), 80)
+        const run = Animation.fromSpriteSheet(runningSpritesheet, range(1, 6), 80)
         const jump = Animation.fromSpriteSheet(jumpingSpritesheet, range(1, 5), 20)
 
 
@@ -143,20 +143,20 @@ export class Player extends Actor { // Ensure Player class is exported
             xspeed = 200;
             this.graphics.use('walk')
             this.graphics.flipHorizontal = false;
-            if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = 400;
-                this.graphics.use('run')
-            }
+            // if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
+            //     xspeed = 400;
+            //     this.graphics.use('run')
+            // }
         }
 
         if (engine.input.keyboard.isHeld(Keys.A) || engine.input.keyboard.isHeld(Keys.Left)) {
             xspeed = -200;
             this.graphics.use('walk')
             this.graphics.flipHorizontal = true;
-            if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = -400;
-                this.graphics.use('run')
-            }
+            // if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
+            //     xspeed = -400;
+            //     this.graphics.use('run')
+            // }
         }
 
 

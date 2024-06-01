@@ -6,8 +6,7 @@ import { IntroBanner } from "./introBanner.js";
 export class IntroScene extends Scene {
 
     onInitialize(engine) {
-        let introBanner = new IntroBanner();
-        this.add(introBanner);
+        this.add(new IntroBanner(750, 400))
     }
 
     onActivate(context) {
