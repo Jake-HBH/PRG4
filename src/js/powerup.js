@@ -6,7 +6,6 @@ export class Powerup extends Actor {
     constructor(x, y) {
         super({ x, y, width: Resources.Powerup.width, height: Resources.Powerup.height });
         this.scale = new Vector(0.1, 0.1)
-        this.jumpSpeed = -2000
         this.isPickedUp = false; // Flag to track if the key is picked up
     }
 

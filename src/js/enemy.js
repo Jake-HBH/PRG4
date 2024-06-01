@@ -9,9 +9,9 @@ export class Enemy extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.Enemy.toSprite());
-        let size = 0.5
+        let size = 0.1
         this.scale = new Vector(size, size);
-        // this.vel = new Vector(150, -3);
+        // this.vel = new Vector(-150, 0);
         this.on('collisionstart', (evt) => this.onCollisionStart(evt));
         // Math.random() * (0.3 - 0.2) + 0.2;
     }
@@ -19,7 +19,7 @@ export class Enemy extends Actor {
 
     onCollisionStart(evt){
         if (evt.other instanceof Player) {
-            this.pos = new Vector(0, 350)
+            // this.pos = new Vector(700, 900)
         }
     }
 }

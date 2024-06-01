@@ -2,7 +2,7 @@ import { Scene, BoundingBox } from "excalibur";
 import { Player } from "./player.js";
 import { Enemy } from "./enemy.js";
 import { Door } from "./door.js";
-import { Key } from "./key.js";
+import { Flashlight } from "./flashlight.js";
 import { Coin } from "./coin.js";
 import { Powerup } from "./powerup.js";
 // import { Background } from "./background.js";
@@ -24,7 +24,7 @@ export class Level2 extends Scene {
 
         this.add(new Enemy(0, 350));
         this.add(new Door(1200, 320));
-        this.add(new Key(1000, 350));
+        // this.add(new Key(1000, 350));
         this.add(new Coin(800, 350));
         this.add(new Powerup(600, 350));
 

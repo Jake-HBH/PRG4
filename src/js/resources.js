@@ -12,7 +12,7 @@ const Resources = {
     PlayerJump: new ImageSource('images/Jump Animation 48x48.png'),
 
     Platform: new ImageSource('images/platform2.png'),
-    Key: new ImageSource('images/pixel-key.png'),
+    Flashlight: new ImageSource('images/flashlight.png'),
     Rock: new ImageSource("images/rock.png"),
     Coin: new ImageSource("images/skull-coin.png"),
     Powerup: new ImageSource("images/powerup.png"),

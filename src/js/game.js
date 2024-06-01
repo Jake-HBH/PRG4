@@ -15,7 +15,7 @@ const options = {
     displayMode: DisplayMode.FitScreen,
     physics: {
         solver: SolverStrategy.Realistic,
-        gravity: new Vector(0, 800)
+        gravity: new Vector(0, 1800)
     }
 }
 
@@ -23,7 +23,7 @@ export class Game extends Engine {
 
     constructor() {
         super(options)
-        this.showDebug(true)
+        this.showDebug(false)
         this.start(ResourceLoader).then(() => this.startGame())
     }
 

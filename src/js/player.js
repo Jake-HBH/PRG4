@@ -28,11 +28,7 @@ export class Player extends Actor { // Ensure Player class is exported
         this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
         this.on('collisionstart', (evt) => this.onCollisionStart(evt));
 
-        // this.on("exitviewport", () => {
-        //     if (this.scene && this.scene.engine) {
-        //         this.scene.engine.goToScene('gameover');
-        //     }
-        // })
+
 
 
         //animation
@@ -98,12 +94,12 @@ export class Player extends Actor { // Ensure Player class is exported
             }
         }
 
-        if (evt.other.name === 'key') {
+        if (evt.other.name === 'flashlight') {
             evt.other.kill();
 
             // Add the key to local storage
             let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
-            inventory.push('key');
+            inventory.push('flashlight');
             localStorage.setItem('inventory', JSON.stringify(inventory));
         } else if (evt.other.name === 'door') {
             // Set the nearby door reference
@@ -124,11 +120,17 @@ export class Player extends Actor { // Ensure Player class is exported
         if (evt.other instanceof Powerup) {
             evt.other.pickUp(this);
             console.log("ik pak een powerup")
-            this.jumpSpeed = -8000;
-            this.scene.engine.clock.schedule(() => (
-                this.jumpSpeed = -5000
-            ), 5000);
+            this.jumpSpeed = -7000;
+            // this.scene.engine.clock.schedule(() => (
+            //     this.jumpSpeed = -5000
+            // ), 5000);
         }
+
+        // this.on("exitviewport", () => {
+        //     if (this.scene && this.scene.engine) {
+        //         this.scene.engine.goToScene('gameover');
+        //     }
+        // })
     }
 
 
@@ -142,7 +144,7 @@ export class Player extends Actor { // Ensure Player class is exported
             this.graphics.use('walk')
             this.graphics.flipHorizontal = false;
             if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = 250;
+                xspeed = 400;
                 this.graphics.use('run')
             }
         }
@@ -152,7 +154,7 @@ export class Player extends Actor { // Ensure Player class is exported
             this.graphics.use('walk')
             this.graphics.flipHorizontal = true;
             if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = -250;
+                xspeed = -400;
                 this.graphics.use('run')
             }
         }
@@ -175,14 +177,14 @@ export class Player extends Actor { // Ensure Player class is exported
 
         if (engine.input.keyboard.wasPressed(Keys.E) && this.nearbyDoor) {
             let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
-            if (inventory.includes('key')) {
+            if (inventory.includes('flashlight')) {
                 // Remove the door and allow passage to level2
                 this.nearbyDoor.kill();
                 this.nearbyDoor = null;
                 engine.goToScene('level2');
             } else {
                 // Display locked message
-                this.nearbyDoor.displayMessage('This door is locked, find the key');
+                this.nearbyDoor.displayMessage('This looks dark, I should find a flashlight');
             }
         }
     }

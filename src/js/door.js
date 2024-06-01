@@ -11,14 +11,14 @@ export class Door extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.Door.toSprite());
-        this.body.collisionType = CollisionType.Fixed; // Fixed collision type
+        this.body.collisionType = CollisionType.Passive; // Fixed collision type
         this.messageLabel = new Label({
             text: '',
             pos: new Vector(this.pos.x - 100, this.pos.y - 30),
             font: new Font({
-                family: 'Arial',
+                family: 'Impact',
                 size: 24,
-                color: Color.White
+                color: Color.Yellow
             })
         });
 
