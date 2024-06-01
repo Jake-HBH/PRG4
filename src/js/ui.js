@@ -2,7 +2,7 @@ import { ScreenElement } from "excalibur";
 import { ScoreLabel } from "./scoreLabel.js"; // Corrected import statement
 
 export class UI extends ScreenElement {
-    onInitialize(engine) {
+    onInitialize() {
         this.scoreLabel = new ScoreLabel();
         this.addChild(this.scoreLabel);
     }

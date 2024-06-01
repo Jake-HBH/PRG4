@@ -8,16 +8,16 @@ import { UI } from "./ui.js";
 
 export class Player extends Actor { // Ensure Player class is exported
     constructor(x, y) {
-        super({ x, y, width: Resources.Player.width, height: Resources.Player.height});
+        super({ x, y, width: Resources.Player.width - 30, height: Resources.Player.height - 20});
         this.graphics.use(Resources.Player.toSprite());
 
         this.body.collisionType = CollisionType.Active;
         this.isGrounded = false; // Add a property to track if the player is on the ground
-        this.scale = new Vector(1.7, 1.7);
-        this.pos = new Vector(450, 200)
+        this.scale = new Vector(1, 1);
+        this.pos = new Vector(150, 950)
         this.inventory = []; // Initialize an empty array to store collected items
         this.health = 100;
-        this.jumpSpeed = -10000;
+        this.jumpSpeed = -5000;
         this.score = 0
         this.ui = new UI()
         
@@ -27,13 +27,12 @@ export class Player extends Actor { // Ensure Player class is exported
         this.body.useGravity = true;
         this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
         this.on('collisionstart', (evt) => this.onCollisionStart(evt));
-        this.on('collisionend', (evt) => this.onCollisionEnd(evt));
 
-        this.on("exitviewport", () => {
-            if (this.scene && this.scene.engine) {
-                this.scene.engine.goToScene('gameover');
-            }
-        })
+        // this.on("exitviewport", () => {
+        //     if (this.scene && this.scene.engine) {
+        //         this.scene.engine.goToScene('gameover');
+        //     }
+        // })
 
 
         //animation
@@ -133,11 +132,6 @@ export class Player extends Actor { // Ensure Player class is exported
     }
 
 
-    onCollisionEnd(evt) {
-        if (evt.other && evt.other.body.collisionType === CollisionType.Fixed) {
-            this.isGrounded = false; // Set isGrounded to false when leaving the ground
-        }
-    }
 
     onPostUpdate(engine) {
         let xspeed = 0;
@@ -148,7 +142,7 @@ export class Player extends Actor { // Ensure Player class is exported
             this.graphics.use('walk')
             this.graphics.flipHorizontal = false;
             if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = 300;
+                xspeed = 250;
                 this.graphics.use('run')
             }
         }
@@ -158,7 +152,7 @@ export class Player extends Actor { // Ensure Player class is exported
             this.graphics.use('walk')
             this.graphics.flipHorizontal = true;
             if (engine.input.keyboard.isHeld(Keys.ShiftLeft) || engine.input.keyboard.isHeld(Keys.Sprint)) {
-                xspeed = -300;
+                xspeed = -250;
                 this.graphics.use('run')
             }
         }
