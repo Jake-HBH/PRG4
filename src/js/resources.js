@@ -13,16 +13,17 @@ const Resources = {
     PlayerJump: new ImageSource('images/Jump Animation 48x48.png'),
 
     Flashlight: new ImageSource('images/flashlight.png'),
-    // Flashlight2: new ImageSource('images/flashlight.png'),
+    Flashlight2: new ImageSource('images/flashlight.png'),
     Coin: new ImageSource("images/skull-coin.png"),
     Powerup: new ImageSource("images/powerup.png"),
     
-    IntroBanner: new ImageSource("images/introbanner.png"),
+    IntroBanner: new ImageSource("images/introbanner (1).png"),
     GameOverBanner: new ImageSource("images/gameoverbanner (1).png"),
     FinishBanner: new ImageSource("images/finishbanner.png"),
     
     BlackRocks: new ImageSource("images/black rocks.png"),
     Door: new ImageSource('images/cave door.png'),
+    Door2: new ImageSource('images/cave door.png'),
 
     DoubleRockPlatform: new ImageSource("images/doublesided rock platform.png"),
     RockFloor: new ImageSource("images/rockplatform.png"),
@@ -37,7 +38,6 @@ const Resources = {
 
     CaveMusic: new Sound("images/cave music.mp3"),
     CoinSound: new Sound("images/coin-sound.wav"),
-    // Anim: new ImageSource('images/all.png'),
 }
 
 

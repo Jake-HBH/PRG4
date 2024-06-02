@@ -11,7 +11,7 @@ export class Door extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.Door.toSprite());
-        this.body.collisionType = CollisionType.Passive; // Fixed collision type
+        this.body.collisionType = CollisionType.Passive;
         this.messageLabel = new Label({
             text: '',
             pos: new Vector(this.pos.x - 100, this.pos.y - 30),
@@ -23,25 +23,12 @@ export class Door extends Actor {
         });
 
         engine.add(this.messageLabel);
-
-        if (engine.input.keyboard.wasPressed(Keys.E) && this.nearbyDoor) {
-            let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
-            if (inventory.includes('flashlight')) {
-                // Remove the door and allow passage to level2
-                this.nearbyDoor.kill();
-                this.nearbyDoor = null;
-                engine.goToScene('level2');
-            } else {
-                // Display locked message
-                this.nearbyDoor.displayMessage('This looks dark, I should find a flashlight');
-            }
-        }
-
     }
+
 
     displayMessage(message) {
         this.messageLabel.text = message;
         this.messageLabel.pos = new Vector(this.pos.x - 200, this.pos.y - 100);
-        setTimeout(() => this.messageLabel.text = '', 2000); // Clear message after 2 seconds
+        setTimeout(() => this.messageLabel.text = '', 2000);
     }
 }

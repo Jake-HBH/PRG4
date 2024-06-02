@@ -94,12 +94,20 @@ export class Player extends Actor { // Ensure Player class is exported
         if (evt.other.name === 'flashlight') {
             evt.other.kill();
 
-            // Add the key to local storage
             let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
             inventory.push('flashlight');
             localStorage.setItem('inventory', JSON.stringify(inventory));
         } else if (evt.other.name === 'door') {
-            // Set the nearby door reference
+            this.nearbyDoor = evt.other;
+        }
+
+        if (evt.other.name === 'flashlight2') {
+            evt.other.kill();
+
+            let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+            inventory.push('flashlight2');
+            localStorage.setItem('inventory', JSON.stringify(inventory));
+        } else if (evt.other.name === 'door2') {
             this.nearbyDoor = evt.other;
         }
 
@@ -109,9 +117,9 @@ export class Player extends Actor { // Ensure Player class is exported
             this.score += 10;
             evt.other.pickUp(this);
             console.log(this.score);
-            if (this.scene && this.scene.engine && this.scene.engine.ui) {
-                this.scene.engine.updateScore(this.score); // Pass this.score instead of score
-            }
+            // if (this.scene && this.scene.engine && this.scene.engine.ui) {
+            //     this.scene.engine.updateScore(this.score); // Pass this.score instead of score
+            // }
             
         }
 
@@ -154,20 +162,23 @@ export class Player extends Actor { // Ensure Player class is exported
             
         }
 
-        // if (this.scene && this.scene.engine && this.scene.engine.ui) {
-        //     // Check if UI exists before updating it
-        //     this.scene.engine.ui.addPoint(this.score);
-        // }
-
         if (engine.input.keyboard.wasPressed(Keys.E) && this.nearbyDoor) {
             let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
             if (inventory.includes('flashlight')) {
-                // Remove the door and allow passage to level2
                 this.nearbyDoor.kill();
                 this.nearbyDoor = null;
                 engine.goToScene('level2');
             } else {
-                // Display locked message
+                this.nearbyDoor.displayMessage('This looks dark, I should find a flashlight');
+            }
+        }
+        if (engine.input.keyboard.wasPressed(Keys.E) && this.nearbyDoor) {
+            let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+            if (inventory.includes('flashlight2')) {
+                this.nearbyDoor.kill();
+                this.nearbyDoor = null;
+                engine.goToScene('finish');
+            } else {
                 this.nearbyDoor.displayMessage('This looks dark, I should find a flashlight');
             }
         }

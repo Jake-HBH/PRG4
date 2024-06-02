@@ -3,13 +3,13 @@ import { Resources } from './resources.js';
 
 export class Door2 extends Actor {
     constructor(x, y) {
-        super({ x, y, width: Resources.Door.width, height: Resources.Door.height });
+        super({ x, y, width: Resources.Door2.width, height: Resources.Door2.height });
         this.name = `door2`;
-        this.scale = new Vector(0.4, 0.3)
+        this.scale = new Vector(0.2, 0.3)
     }
 
     onInitialize(engine) {
-        this.graphics.use(Resources.Door.toSprite());
+        this.graphics.use(Resources.Door2.toSprite());
         this.body.collisionType = CollisionType.Passive; // Fixed collision type
         this.messageLabel = new Label({
             text: '',
@@ -22,7 +22,6 @@ export class Door2 extends Actor {
         });
 
         engine.add(this.messageLabel);
-
     }
 
     displayMessage(message) {

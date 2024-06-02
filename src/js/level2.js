@@ -2,7 +2,7 @@ import { Scene, BoundingBox } from "excalibur";
 import { Player } from "./player.js";
 import { Enemy } from "./enemy.js";
 import { Door } from "./door.js";
-import {Door2} from "./door2.js";
+import { Door2 } from "./door2.js";
 import { Flashlight } from "./flashlight.js";
 import { Flashlight2 } from "./flashlight2.js";
 import { Coin } from "./coin.js";
@@ -33,8 +33,8 @@ export class Level2 extends Scene {
         this.add(new Enemy(700, 830));
         this.add(new Enemy(800, 730));
         this.add(new Enemy(1300, 530));
-        this.add(new Door(1600, 850));
-        this.add(new Flashlight(1600, 400));
+        this.add(new Door2(1600, 850));
+        this.add(new Flashlight2(1600, 400));
         this.add(new Coin(550, 740));
         //width, height
         //hoger nummer is lager

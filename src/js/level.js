@@ -14,7 +14,6 @@ import { RockRoof2 } from "./rockroof2.js";
 import { BlackRocks } from "./blackrocks.js";
 import { WoodenScaffolding } from "./scaffolding.js";
 import { WoodenPlatform } from "./woodenplatform.js";
-import { Flashlight2 } from "./flashlight2.js";
 
 export class Level extends Scene {
     onInitialize(engine) {

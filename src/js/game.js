@@ -25,12 +25,8 @@ export class Game extends Engine {
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
-    ui
-    mylabel
     
     startGame() {
-
-
         this.ui = new UI()
         this.add(this.ui)
 
@@ -43,9 +39,6 @@ export class Game extends Engine {
         this.goToScene(`intro`)
     }
 
-    updateScore(score) {
-        this.text = `Score: ${score}`;
-    }
 }
 
 new Game()

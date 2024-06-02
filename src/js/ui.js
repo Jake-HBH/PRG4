@@ -1,32 +1,31 @@
+// ui.js
 import { ScreenElement } from "excalibur";
-import { ScoreLabel } from "./scoreLabel.js"; // Corrected import statement
+import { TimerLabel } from "./timerLabel.js";
 
 export class UI extends ScreenElement {
-        onInitialize() {
-                this.scoreLabel = new ScoreLabel(); // Create a new ScoreLabel instance
-                this.addChild(this.scoreLabel); // Add the ScoreLabel to the UI
-            }
-        
-            // Update the score label with the provided score
-            updateField(score) {
-                    console.log("point");
-                    this.scoreLabel.updateScore(score); // Assuming you have implemented an updateScore method in the ScoreLabel class
-                }
-            }
+    onInitialize(engine) {
+        this.timerLabel = new TimerLabel();
+        this.addChild(this.timerLabel);
 
-            
-// import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
-// import { ScoreLabel } from "./scoreLabel";
+        this.timeRemaining = 120;
+        // this.updateTimer();
+    }
 
-// export class UI extends ScreenElement {
-//     onInitialize(engine) {
-//         this.scoreLabel = new ScoreLabel();
-//         this.addChild(this.scoreLabel);
-//         this.score = 0;
+    // updateTimer() {
+    //     this.engine.clock.schedule(() => {
+    //         if (this.timeRemaining < 0) {
+    //             this.timeRemaining--;
+    //             this.timerLabel.updateTime(this.timeRemaining);
+    //             this.updateTimer();
+    //         } else {
+    //             this.handleTimeUp();
+    //         }
+    //     }, 1000);
+    // }
 
-//     }
-
-
-// }
-
-            
+    // handleTimeUp() {
+    //     if (this.engine && this.engine.goToScene) {
+    //         this.engine.goToScene('gameover');
+    //     }
+    // }
+}
