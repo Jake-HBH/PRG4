@@ -1,5 +1,6 @@
-import { Actor, Vector, CollisionType, Label, Font, Color } from "excalibur";
+import { Actor, Vector, CollisionType, Label, Font, Color, Keys } from "excalibur";
 import { Resources } from './resources.js';
+import { Player } from "./player.js";
 
 export class Door extends Actor {
     constructor(x, y) {
@@ -22,6 +23,19 @@ export class Door extends Actor {
         });
 
         engine.add(this.messageLabel);
+
+        if (engine.input.keyboard.wasPressed(Keys.E) && this.nearbyDoor) {
+            let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+            if (inventory.includes('flashlight')) {
+                // Remove the door and allow passage to level2
+                this.nearbyDoor.kill();
+                this.nearbyDoor = null;
+                engine.goToScene('level2');
+            } else {
+                // Display locked message
+                this.nearbyDoor.displayMessage('This looks dark, I should find a flashlight');
+            }
+        }
 
     }
 
