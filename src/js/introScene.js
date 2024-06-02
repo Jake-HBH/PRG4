@@ -7,9 +7,9 @@ export class IntroScene extends Scene {
 
     onInitialize(engine) {
         this.add(new IntroBanner(750, 400))
-        // const backgroundMusic = Resources.CaveMusic;
-        // backgroundMusic.loop = true;
-        // backgroundMusic.play();
+        const backgroundMusic = Resources.CaveMusic;
+        backgroundMusic.loop = true;
+        backgroundMusic.play();
     }
 
     onActivate(context) {
