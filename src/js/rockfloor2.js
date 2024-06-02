@@ -9,6 +9,6 @@ export class RockFloor2 extends Actor {
 
     onInitialize() {
         this.graphics.use(Resources.RockFloor2.toSprite());
-        this.body.collisionType = CollisionType.Fixed; // Fixed collision type
+        this.body.collisionType = CollisionType.Fixed;
     }
 }

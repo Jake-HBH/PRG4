@@ -3,10 +3,9 @@ import { Resources, ResourceLoader } from './resources.js';
 import { Enemy } from "./enemy.js";
 import { Coin } from "./coin.js";
 import { Powerup } from "./powerup.js";
-import { UI } from "./ui.js";
 
 
-export class Player extends Actor { // Ensure Player class is exported
+export class Player extends Actor {
     constructor(x, y) {
         super({ x, y, width: Resources.Player.width - 30, height: Resources.Player.height - 20});
         this.graphics.use(Resources.Player.toSprite());
@@ -76,7 +75,6 @@ export class Player extends Actor { // Ensure Player class is exported
     
     onCollisionStart(evt, engine, score) {
         if (!evt.other) {
-            // Exit early if evt.other is undefined
             return;
         }
 
@@ -111,7 +109,6 @@ export class Player extends Actor { // Ensure Player class is exported
             this.nearbyDoor = evt.other;
         }
 
-            // Check if UI exists before updating it
         if (evt.other instanceof Coin) {
             console.log("picked up a coin");
             this.score += 10;
@@ -157,7 +154,7 @@ export class Player extends Actor { // Ensure Player class is exported
 
         if (engine.input.keyboard.wasPressed(Keys.Space) && this.isGrounded) {
             this.graphics.use('jump')
-            this.isGrounded = false; // Set isGrounded to false when jumping
+            this.isGrounded = false;
             this.body.applyLinearImpulse(new Vector(0, this.jumpSpeed));
             
         }

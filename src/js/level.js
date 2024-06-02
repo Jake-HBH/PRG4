@@ -26,7 +26,7 @@ export class Level extends Scene {
         this.ui = new UI();
         this.add(this.ui);
 
-        const player = new Player();
+        const player = new Player(150, 950);
         this.add(player);
 
         this.add(new Enemy(500, 810));

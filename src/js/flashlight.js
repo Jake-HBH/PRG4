@@ -10,8 +10,6 @@ export class Flashlight extends Actor {
 
     onInitialize() {
         this.graphics.use(Resources.Flashlight.toSprite());
-        this.body.collisionType = CollisionType.Passive; // Fixed collision type
+        this.body.collisionType = CollisionType.Passive;
     }
 }
-
-// this.actions.fade(0, 200).die(); // Fade out and remove the key from the scene

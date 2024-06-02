@@ -9,6 +9,6 @@ export class WoodenPlatform extends Actor {
 
     onInitialize() {
         this.graphics.use(Resources.WoodenPlatform.toSprite());
-        this.body.collisionType = CollisionType.Fixed; // Fixed collision type
+        this.body.collisionType = CollisionType.Fixed;
     }
 }

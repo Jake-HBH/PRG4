@@ -10,7 +10,7 @@ export class Door2 extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.Door2.toSprite());
-        this.body.collisionType = CollisionType.Passive; // Fixed collision type
+        this.body.collisionType = CollisionType.Passive;
         this.messageLabel = new Label({
             text: '',
             pos: new Vector(this.pos.x - 100, this.pos.y - 30),
@@ -27,6 +27,6 @@ export class Door2 extends Actor {
     displayMessage(message) {
         this.messageLabel.text = message;
         this.messageLabel.pos = new Vector(this.pos.x - 200, this.pos.y - 100);
-        setTimeout(() => this.messageLabel.text = '', 2000); // Clear message after 2 seconds
+        setTimeout(() => this.messageLabel.text = '', 2000);
     }
 }

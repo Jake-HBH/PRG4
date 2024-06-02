@@ -1,4 +1,4 @@
-// timerLabel.js
+
 import { Label, Font, FontUnit, Vector, Color } from "excalibur";
 
 export class TimerLabel extends Label {
