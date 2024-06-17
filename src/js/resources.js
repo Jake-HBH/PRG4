@@ -7,10 +7,10 @@ const Resources = {
     Enemy: new ImageSource('images/SimpleEnemies Bat_Idle_0.png'),
     EnemyAnim: new ImageSource('images/SimpleEnemies Bat_Idle Spritesheet.png'),
 
-    Player: new ImageSource('images/shadow.png'),
-    PlayerIdle: new ImageSource('images/Idel Animation 48x48.png'),
-    PlayerRun: new ImageSource('images/Run Animation 48x48.png'),
-    PlayerJump: new ImageSource('images/Jump Animation 48x48.png'),
+    Player: new ImageSource('images/Kid2.png'),
+    PlayerIdle: new ImageSource('images/Kid2.png'),
+    PlayerRun: new ImageSource('images/Kid2.png'),
+    PlayerJump: new ImageSource('images/Kid2.png'),
 
     Flashlight: new ImageSource('images/flashlight.png'),
     Flashlight2: new ImageSource('images/flashlight.png'),

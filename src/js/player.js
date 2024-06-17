@@ -7,7 +7,7 @@ import { Powerup } from "./powerup.js";
 
 export class Player extends Actor {
     constructor(x, y) {
-        super({ x, y, width: Resources.Player.width - 30, height: Resources.Player.height - 20});
+        super({ x, y, width: Resources.Player.width, height: Resources.Player.height});
         this.graphics.use(Resources.Player.toSprite());
 
         this.body.collisionType = CollisionType.Active;
